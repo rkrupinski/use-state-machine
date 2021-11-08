@@ -1427,10 +1427,10 @@
     chrome-trace-event "^1.0.2"
     nullthrows "^1.1.1"
 
-"@rkrupinski/prettierconfig@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rkrupinski/prettierconfig/-/prettierconfig-1.0.0.tgz#bd535edb5cbd66be692222d51769a6c1178239f5"
-  integrity sha512-JECLgI6bcUn/An7idTeEPRSJCazYH4JCUpzL0D978q7xRUU9Sdbj/lo64adYv0BsAx+s9crqW+rqOBH1+X56wA==
+"@rkrupinski/prettierconfig@1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@rkrupinski/prettierconfig/-/prettierconfig-1.0.1.tgz#6a38a8103445368b727e183c0c6b4ad33d07a34a"
+  integrity sha512-qJFjoJijraVFK3sk+6Mls8FqGBOiVMr1x3GQJAZLj7uUW3nPZ6v+i1vValX5NjanQFUdxhORrbzsKpktLM5Xwg==
 
 "@sinonjs/commons@^1.7.0":
   version "1.8.3"

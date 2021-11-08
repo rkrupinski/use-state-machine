@@ -14,7 +14,7 @@
     "test": "jest --ci"
   },
   "devDependencies": {
-    "@rkrupinski/prettierconfig": "1.0.0",
+    "@rkrupinski/prettierconfig": "1.0.1",
     "@testing-library/react-hooks": "7.0.2",
     "@types/jest": "27.0.2",
     "@types/node": "16.10.4",
