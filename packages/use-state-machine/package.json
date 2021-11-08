@@ -1,0 +1,44 @@
+{
+  "name": "@rkrupinski/use-state-machine",
+  "description": "A simple state machine React hook",
+  "version": "0.0.0",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "format": "pretty-quick --staged",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint src/**",
+    "test": "jest --ci"
+  },
+  "devDependencies": {
+    "@rkrupinski/prettierconfig": "1.0.0",
+    "@testing-library/react-hooks": "7.0.2",
+    "@types/jest": "27.0.2",
+    "@types/node": "16.10.4",
+    "@typescript-eslint/eslint-plugin": "5.0.0",
+    "@typescript-eslint/parser": "5.0.0",
+    "eslint": "8.0.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "27.3.1",
+    "prettier": "2.4.1",
+    "pretty-quick": "3.1.1",
+    "react-test-renderer": "17.0.2",
+    "ts-jest": "27.0.7",
+    "typescript": "4.4.4"
+  },
+  "peerDependencies": {
+    "react": "^16"
+  },
+  "author": "Rafał Krupiński <rkrupinski.npm@gmail.com> (https://github.com/rkrupinski)",
+  "license": "MIT",
+  "prettier": "@rkrupinski/prettierconfig",
+  "engines": {
+    "node": "^14.17.0"
+  },
+  "jest": {
+    "preset": "ts-jest"
+  }
+}

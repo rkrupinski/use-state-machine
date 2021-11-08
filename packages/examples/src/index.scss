@@ -1,0 +1,14 @@
+.toggle {
+  width: 100px;
+  height: 100px;
+  background: red;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &--active {
+    background: green;
+  }
+}
