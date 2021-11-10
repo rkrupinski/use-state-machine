@@ -35,9 +35,6 @@
   "author": "Rafał Krupiński <rkrupinski.npm@gmail.com> (https://github.com/rkrupinski)",
   "license": "MIT",
   "prettier": "@rkrupinski/prettierconfig",
-  "engines": {
-    "node": "^14.17.0"
-  },
   "jest": {
     "preset": "ts-jest"
   }
