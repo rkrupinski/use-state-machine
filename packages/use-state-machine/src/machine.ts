@@ -7,84 +7,82 @@ import {
   State,
   Sender,
 } from './types';
-import { keys, normalizeEvt, normalizeEvtConfig } from './utils';
+import { keys, noop, normalizeEvt, normalizeEvtConfig } from './utils';
 
 export const useStateMachine = <S extends string, E extends string, C>(
   options: MachineOptions<S, E, C>,
 ) => {
-  const [effect, forceEffect] = React.useReducer((c: number) => c + 1, 0);
+  const [render, forceRender] = React.useReducer((c: number) => c + 1, 0);
 
-  const stateValueRef = React.useRef<S>(options.initial);
-
-  const [state, setState] = React.useState<State<S, E, C>>({
-    value: stateValueRef.current,
+  const stateRef = React.useRef<State<S, E, C>>({
+    value: options.initial,
     nextEvents: keys(options.states[options.initial].on ?? {}),
     event: { type: $$INITIAL },
-    // eslint-disable-next-line  @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     context: options.context as any,
   });
 
-  const setContext = React.useCallback<ContextUpdater<C>>(
-    updater => {
-      setState(s => ({
-        ...s,
-        context: updater(s.context),
-      }));
-    },
-    [setState],
-  );
+  const [state, setState] = React.useState(stateRef.current);
 
-  const send = React.useCallback<Sender<E>>(
-    evt => {
-      const events = options.states[stateValueRef.current].on;
+  const setContext = React.useCallback<ContextUpdater<C>>(updater => {
+    stateRef.current = {
+      ...stateRef.current,
+      context: updater(stateRef.current.context),
+    };
 
-      if (!events) return;
+    setState(stateRef.current);
+  }, []);
 
-      const normalizedEvent = normalizeEvt(evt);
+  const send = React.useCallback<Sender<E>>(evt => {
+    const events = options.states[stateRef.current.value].on;
 
-      const eventConfig = events[normalizedEvent.type];
+    if (!events) return;
 
-      if (!eventConfig) return;
+    const normalizedEvent = normalizeEvt(evt);
 
+    const eventConfig = events[normalizedEvent.type];
+
+    if (!eventConfig) return;
+
+    const { target: nextStateValue, guard } = normalizeEvtConfig(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-      const normalizedEventConfig = normalizeEvtConfig(eventConfig!);
+      eventConfig!,
+    );
 
-      const canTransition =
-        normalizedEventConfig.guard?.({
-          event: normalizedEvent,
-          context: state.context,
-        }) ?? true;
-
-      if (!canTransition) return;
-
-      stateValueRef.current = normalizedEventConfig.target;
-
-      setState(s => ({
-        ...s,
-        value: stateValueRef.current,
-        nextEvents: keys(options.states[stateValueRef.current].on ?? {}),
+    const canTransition =
+      guard?.({
         event: normalizedEvent,
-      }));
+        context: stateRef.current.context,
+      }) ?? true;
 
-      forceEffect();
-    },
+    if (!canTransition) return;
+
+    stateRef.current = {
+      ...stateRef.current,
+      value: nextStateValue,
+      nextEvents: keys(options.states[nextStateValue].on ?? {}),
+      event: normalizedEvent,
+    };
+
+    setState(stateRef.current);
+
+    forceRender();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [state],
-  );
+  }, []);
 
   React.useEffect(() => {
-    const _state = options.states[state.value];
+    const { effect } = options.states[stateRef.current.value];
 
-    const cleanup = _state.effect?.({
-      context: state.context,
-      event: state.event,
+    const cleanup = effect?.({
+      context: stateRef.current.context,
+      event: stateRef.current.event,
       setContext,
       send,
     });
 
-    return typeof cleanup === 'function' ? cleanup : () => undefined;
+    return typeof cleanup === 'function' ? cleanup : noop;
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [effect]);
+  }, [render, setContext, send]);
 
   return [state, send] as const;
 };

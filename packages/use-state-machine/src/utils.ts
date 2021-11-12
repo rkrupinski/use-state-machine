@@ -12,3 +12,6 @@ type Keys<T> = T extends Record<infer K, any> ? K : never;
 
 // eslint-disable-next-line  @typescript-eslint/no-explicit-any
 export const keys = <T>(obj: T): Keys<T>[] => Object.keys(obj) as any;
+
+// eslint-disable-next-line  @typescript-eslint/no-empty-function
+export const noop = () => {};
