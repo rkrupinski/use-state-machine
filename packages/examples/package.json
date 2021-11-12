@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "parcel src/index.html --open",
-    "build": "parcel build src/index.html --dist-dir dist",
+    "start": "parcel src/index.html --no-cache --open",
+    "build": "parcel build src/index.html --no-cache --dist-dir dist",
     "clean": "rm -rf dist"
   },
   "dependencies": {
