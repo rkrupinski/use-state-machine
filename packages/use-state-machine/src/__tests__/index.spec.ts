@@ -540,7 +540,7 @@ describe('useStateMachine', () => {
       });
     });
 
-    it('should let one send events from effects', () => {
+    it('should send events from effects', () => {
       const { result } = renderHook(() =>
         useStateMachine({
           initial: 'foo',
@@ -567,8 +567,29 @@ describe('useStateMachine', () => {
         context: undefined,
       });
     });
+  });
 
-    it('should let one set context from effects', () => {
+  describe('Context', () => {
+    it('should infer context type', () => {
+      renderHook(() =>
+        useStateMachine({
+          initial: 'foo',
+          states: {
+            foo: {
+              effect({ setContext }) {
+                setContext(() => 'bar');
+
+                // @ts-expect-error 'baz' does not match
+                setContext(() => 'baz');
+              },
+            },
+          },
+          context: 'foo' as 'foo' | 'bar',
+        }),
+      );
+    });
+
+    it('should set context from effects', () => {
       const { result } = renderHook(() =>
         useStateMachine({
           initial: 'foo',
@@ -591,27 +612,6 @@ describe('useStateMachine', () => {
         nextEvents: [],
         context: 2,
       });
-    });
-  });
-
-  describe('Context', () => {
-    it('should infer context type', () => {
-      renderHook(() =>
-        useStateMachine({
-          initial: 'foo',
-          states: {
-            foo: {
-              effect({ setContext }) {
-                setContext(() => 'bar');
-
-                // @ts-expect-error 'baz' does not match
-                setContext(() => 'baz');
-              },
-            },
-          },
-          context: 'foo' as 'foo' | 'bar',
-        }),
-      );
     });
   });
 });
