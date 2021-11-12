@@ -3120,10 +3120,10 @@ escodegen@^2.0.0:
   optionalDependencies:
     source-map "~0.6.1"
 
-eslint-plugin-react-hooks@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.0.tgz#8c229c268d468956334c943bb45fc860280f5556"
-  integrity sha512-623WEiZJqxR7VdxFCKLI6d6LLpwJkGPYKODnkH3D7WpOG5KM8yWueBd8TLsNAetEJNF5iJmolaAKO3F8yzyVBQ==
+eslint-plugin-react-hooks@4.2.1-alpha-cb11155c8-20211112:
+  version "4.2.1-alpha-cb11155c8-20211112"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-4.2.1-alpha-cb11155c8-20211112.tgz#79319db9e7fa725a547c560a6c7f00bd06c8db2f"
+  integrity sha512-E6z9GxZY/OJKOzrykeJPgXt3wNtqc65mwul9ybiwLdjy/LVjNM0stcOZdfRSoJ9olM4NTfkbOHVFIcjg5EF7Uw==
 
 eslint-scope@^5.1.1:
   version "5.1.1"
