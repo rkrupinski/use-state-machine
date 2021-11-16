@@ -31,7 +31,7 @@
     "typescript": "4.4.4"
   },
   "peerDependencies": {
-    "react": "^16"
+    "react": ">=16"
   },
   "author": "Rafał Krupiński <rkrupinski.npm@gmail.com> (https://github.com/rkrupinski)",
   "license": "MIT",
