@@ -27,6 +27,7 @@ const Examples: React.FC = () => {
   return (
     <>
       <header>
+        <h1>@rkrupinski/use-state-machine</h1>
         {example.map(e => (
           <label key={e} style={{ marginRight: 10 }}>
             <input
