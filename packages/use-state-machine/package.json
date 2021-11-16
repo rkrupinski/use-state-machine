@@ -11,7 +11,8 @@
     "format": "pretty-quick --staged",
     "typecheck": "tsc --noEmit",
     "lint": "eslint src/**",
-    "test": "jest --ci"
+    "test": "jest --ci",
+    "prepack": "yarn build"
   },
   "devDependencies": {
     "@rkrupinski/prettierconfig": "1.0.1",
