@@ -44,6 +44,7 @@ Table of contents:
   - [Guards](#guards)
 - [Event payload](#event-payload)
 - [Context](#context)
+- [Further reading](#further-reading)
 
 ## History
 
@@ -202,6 +203,8 @@ const [state, send] = useStateMachine({
   context: 42,
 });
 ```
+
+Machine can be configured with the following options:
 
 <table>
   <tr>
@@ -615,3 +618,8 @@ const [state, send] = useStateMachine({
 
 state.context; // 'foo' | 'bar'
 ```
+
+## Further reading
+
+- [State machines](https://en.wikipedia.org/wiki/Finite-state_machine) on Wikipedia
+- [XState](https://xstate.js.org/)
