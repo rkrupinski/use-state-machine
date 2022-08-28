@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import { createRoot } from 'react-dom/client';
 
 import { Basic } from './examples/basic';
 import { Payload } from './examples/payload';
@@ -59,4 +59,6 @@ const Examples: React.FC = () => {
   );
 };
 
-ReactDOM.render(<Examples />, document.querySelector('#root'));
+const root = createRoot(document.querySelector('#root')!);
+
+root.render(<Examples />);
