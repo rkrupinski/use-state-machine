@@ -10,15 +10,15 @@
   "dependencies": {
     "@rkrupinski/use-state-machine": "1.0.0",
     "classnames": "^2.3.1",
-    "io-ts": "2.2.16",
     "fp-ts": "2.11.5",
-    "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "io-ts": "2.2.16",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
   },
   "devDependencies": {
     "@rkrupinski/prettierconfig": "1.0.1",
-    "@types/react": "17.0.32",
-    "@types/react-dom": "17.0.10",
+    "@types/react": "18.0.17",
+    "@types/react-dom": "18.0.6",
     "parcel": "2.0.0"
   },
   "prettier": "@rkrupinski/prettierconfig"

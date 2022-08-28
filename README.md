@@ -91,6 +91,7 @@ const [
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -98,9 +99,9 @@ const [
       <code>value</code>
     </td>
     <td>
-      Type: <code>string</code>
-      <br />
-      <br />
+      <code>string</code>
+    </td>
+    <td>
       The name of the current state.
     </td>
   </tr>
@@ -109,9 +110,9 @@ const [
       <code>nextEvents</code>
     </td>
     <td>
-      Type: <code>string[]</code>
-      <br />
-      <br />
+      <code>string[]</code>
+    </td>
+    <td>
       The names of possible events.
       <br />
       <br />
@@ -123,9 +124,9 @@ const [
       <code>event</code>
     </td>
     <td>
-      Type: <code>Event</code>
-      <br />
-      <br />
+      <code>Event</code>
+    </td>
+    <td>
       The event that led to the current state.
       <br />
       <br />
@@ -137,9 +138,9 @@ const [
       <code>context</code>
     </td>
     <td>
-      Type: <code>C</code> (inferred)
-      <br />
-      <br />
+      <code>C</code> (inferred)
+    </td>
+    <td>
       Machine's extended state. Think of it as a place to store additional, machine-related data throughout its whole lifecycle.
       <br />
       <br />
@@ -162,6 +163,7 @@ Once initialized, events can be sent to the machine using the `send` function.
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -169,7 +171,10 @@ Once initialized, events can be sent to the machine using the `send` function.
       <code>send</code>
     </td>
     <td>
-      Type: <code>(event: string | Event) => void</code>
+      <code>(event: string | Event) => void</code>
+    </td>
+    <td>
+      Sends events to the machine
     </td>
   </tr>
 </table>
@@ -209,6 +214,7 @@ Machine can be configured with the following options:
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -216,9 +222,9 @@ Machine can be configured with the following options:
       <code>initial</code> (required)
     </td>
     <td>
-      Type: <code>string</code>
-      <br />
-      <br />
+      <code>string</code>
+    </td>
+    <td>
       The initial machine state value.
       <br />
       <br />
@@ -230,9 +236,9 @@ Machine can be configured with the following options:
       <code>states</code> (required)
     </td>
     <td>
-      Type: <code>{ [key: string]: StateConfig }</code>
-      <br />
-      <br />
+      <code>{ [key: string]: StateConfig }</code>
+    </td>
+    <td>
       An object with configuration for all the states.
       <br />
       <br />
@@ -244,13 +250,10 @@ Machine can be configured with the following options:
       <code>context</code>
     </td>
     <td>
-      Type: <code>C</code>
-      <br />
-      <br />
+      <code>C</code> (inferred)
+    </td>
+    <td>
       Initial context value.
-      <br />
-      <br />
-      ℹ️ Note: Used for inferring context type.
       <br />
       <br />
       (see <a href="#context">Context</a>)
@@ -284,6 +287,7 @@ Keys of the `states` object are state names, values are `StateConfig` object of 
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -291,9 +295,9 @@ Keys of the `states` object are state names, values are `StateConfig` object of 
       <code>on</code>
     </td>
     <td>
-      Type: <code>{ [key: string]: string | EvtConfig }</code>
-      <br />
-      <br />
+      <code>{ [key: string]: string | EvtConfig }</code>
+    </td>
+    <td>
       An object with configuration for all the transitions supported by this particular state.
       <br />
       <br />
@@ -305,10 +309,10 @@ Keys of the `states` object are state names, values are `StateConfig` object of 
       <code>effect</code>
     </td>
     <td>
-      Type: <code>Effect</code>
-      <br />
-      <br />
-      A callback fired once the machine has transitioned to this particular state.
+      <code>Effect</code>
+    </td>
+    <td>
+      A callback fired once the machine has transitioned to a particular state.
       <br />
       <br />
       (see <a href="#effects">Effects</a>)
@@ -320,7 +324,7 @@ Keys of the `states` object are state names, values are `StateConfig` object of 
 
 ### Effects
 
-You can define a callback to fire once the machine has transitioned to this particular state using the `effect` field.
+You can define a callback to fire once the machine has transitioned to a particular state using the `effect` field.
 
 ```ts
 const [state, send] = useStateMachine({
@@ -345,6 +349,7 @@ The `effect` callback will receive an object of the following shape:
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -352,9 +357,9 @@ The `effect` callback will receive an object of the following shape:
       <code>context</code>
     </td>
     <td>
-      Type: <code>C</code> (inferred)
-      <br />
-      <br />
+      <code>C</code> (inferred)
+    </td>
+    <td>
       The current value of the machine context.
       <br />
       <br />
@@ -366,9 +371,9 @@ The `effect` callback will receive an object of the following shape:
       <code>setContext</code>
     </td>
     <td>
-      Type: <code>(updater: (context: C) => C) => void</code>
-      <br />
-      <br />
+      <code>(updater: (context: C) => C) => void</code>
+    </td>
+    <td>
       A function to update the value of <code>context</code>.
       <br />
       <br />
@@ -380,10 +385,10 @@ The `effect` callback will receive an object of the following shape:
       <code>event</code>
     </td>
     <td>
-      Type: <code>Event</code>
-      <br />
-      <br />
-      The event that led to the current state.
+      <code>Event</code>
+    </td>
+    <td>
+      The event that triggered the current machine state.
       <br />
       <br />
       (see <a href="#events">Events</a>)
@@ -394,9 +399,9 @@ The `effect` callback will receive an object of the following shape:
       <code>send</code>
     </td>
     <td>
-      Type: <code>(event: string | Event) => void</code>
-      <br />
-      <br />
+      <code>(event: string | Event) => void</code>
+    </td>
+    <td>
       A function to send events to the machine.
       <br />
       <br />
@@ -456,6 +461,7 @@ Transition config can either be a `string` (denoting the target state value) or 
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -463,9 +469,9 @@ Transition config can either be a `string` (denoting the target state value) or 
       <code>target</code> (required)
     </td>
     <td>
-      Type: <code>string</code>
-      <br />
-      <br />
+      <code>string</code>
+    </td>
+    <td>
       Target state value.
       <br />
       <br />
@@ -480,9 +486,9 @@ Transition config can either be a `string` (denoting the target state value) or 
       <code>guard</code>
     </td>
     <td>
-      Type: <code>Guard</code>
-      <br />
-      <br />
+      <code>Guard</code>
+    </td>
+    <td>
       A <code>boolean</code>-returning function to determine whether state transition is allowed.
       <br />
       <br />
@@ -503,6 +509,7 @@ A `guard` function will receive an object of the following shape:
 <table>
   <tr>
     <th>Name</th>
+    <th>Type</th>
     <th>Description</th>
   </tr>
   <tr>
@@ -510,9 +517,9 @@ A `guard` function will receive an object of the following shape:
       <code>event</code> 
     </td>
     <td>
-      Type: <code>Event</code>
-      <br />
-      <br />
+      <code>Event</code>
+    </td>
+    <td>
       The event that triggered state transition.
       <br />
       <br />
@@ -524,9 +531,9 @@ A `guard` function will receive an object of the following shape:
       <code>context</code>
     </td>
     <td>
-      Type: <code>C</code> (inferred)
-      <br />
-      <br />
+      <code>C</code> (inferred)
+    </td>
+    <td>
       The current value of the machine context.
       <br />
       <br />
@@ -622,4 +629,5 @@ state.context; // 'foo' | 'bar'
 ## Further reading
 
 - [State machines](https://en.wikipedia.org/wiki/Finite-state_machine) on Wikipedia
+- [@cassiozen/usestatemachine](https://github.com/cassiozen/useStateMachine)
 - [XState](https://xstate.js.org/)
