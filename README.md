@@ -3,6 +3,7 @@
 A simple yet powerful finite state machine [React](https://reactjs.org/) hook.
 
 ![Build status](https://github.com/rkrupinski/use-state-machine/workflows/CI/badge.svg)
+![minified + gzip](https://badgen.net/bundlephobia/minzip/@rkrupinski/use-state-machine)
 
 ```ts
 const [state, send] = useStateMachine({
